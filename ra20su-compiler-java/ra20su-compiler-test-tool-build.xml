@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="ra20su-compiler" name="Create Runnable Jar for Project cpsc323_assignment1_lexer">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+	<!--define folder properties-->
+	<property name="dir.buildfile" value="." />
+	<property name="dir.workspace" value="${dir.buildfile}/.." />
+	<property name="buildDirectory" value="../../../builds" />
+	<property name="outputDirectory" value="${buildDirectory}/ra20su" />
+	<target name="ra20su-compiler" depends="copyOtherFiles">
+		<jar destfile="${outputDirectory}/semantic-analyzer.jar" filesetmanifest="mergewithoutmain">
+			<manifest>
+				<attribute name="Main-Class" value="com.ra20su.compiler.Ra20suCompiler" />
+				<attribute name="Class-Path" value="." />
+			</manifest>
+			<fileset dir="${dir.buildfile}/bin" />
+		</jar>
+	</target>
+	<target name="copyOtherFiles" depends="clean">
+		<copy todir="${outputDirectory}">
+			<fileset dir="./Tool/">
+				<filename name="ra20su-compiler.bat" />
+			</fileset>
+		</copy>
+		<copydir src="./InputFiles" dest="${outputDirectory}/InputFiles" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${outputDirectory}">
+		</delete>
+	</target>
+
+
+</project>

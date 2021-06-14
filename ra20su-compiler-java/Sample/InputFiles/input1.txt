@@ -1,0 +1,23 @@
+
+
+
+$$
+ [* declarations *]
+integer i;
+integer max;
+integer count;
+integer sum;
+max = 10;
+sum = 0;
+get(count);
+if(count < max) 
+  sum = 0;
+  i = i + 1;
+  
+  
+fi
+put(sum);
+$$
+
+
+ 

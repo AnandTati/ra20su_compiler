@@ -21,3 +21,8 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+ra20su-compiler-java/.idea/	
+.classpath
+.project
+ra20su-compiler-java/.settings
+*.iml
