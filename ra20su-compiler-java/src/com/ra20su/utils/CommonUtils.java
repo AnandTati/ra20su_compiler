@@ -183,4 +183,51 @@ public class CommonUtils {
 		bufferedWriter.newLine();
 		bufferedWriter.flush();
 	}
+
+	public static String readConsole() throws Exception {
+		StringBuilder stringBuilder = new StringBuilder();
+		try (Scanner sc = new Scanner(System.in)) {
+			String line = "";
+			while (!"eof".equalsIgnoreCase(line = sc.nextLine())) {
+				stringBuilder.append(line + "\n");
+			}
+
+			return stringBuilder.toString();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	public static void writeSemanticOutputOnConsole(SymbolTable symbolTable, InstructionTable instructionTable)
+			throws IOException {
+		String strHeading = String.format("%-20s %-20s %-20s", "", "Symbol Table", "");
+		System.out.println(strHeading + "\n");
+		strHeading = String.format("%-20s %-20s %-20s", "Name", "Memory Location", "Type");
+		System.out.println(strHeading + "\n");
+		System.out.println(
+				"--------------------------------------------------------------------------------------------");
+		for (Symbol symbol : symbolTable.getListOfSymbols()) {
+			String str = String.format("%-20s %-20s %-20s", symbol.getSymbolName(), symbol.getMemLocation(),
+					symbol.getType());
+			System.out.println(str);
+		}
+		System.out.println(
+				"--------------------------------------------------------------------------------------------");
+		System.out.println("\n\n\n");
+		strHeading = String.format("%-20s %-20s %-20s", "", "Assembly Code", "");
+		System.out.println(strHeading);
+		System.out.println(
+				"--------------------------------------------------------------------------------------------");
+		for (Instruction instruction : instructionTable.getInstrucions()) {
+			String attribute = instruction.getAttribute();
+			if (CommonUtils.isEmpty(attribute)) {
+				attribute = "";
+			}
+			String str = String.format("%-20s %-20s %-20s", instruction.getInstructionNumber(),
+					instruction.getInstruction(), attribute);
+			System.out.println(str);
+		}
+		System.out.println(
+				"--------------------------------------------------------------------------------------------");
+	}
 }
